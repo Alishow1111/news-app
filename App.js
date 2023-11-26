@@ -5,6 +5,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 export default function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     fetch('https://nc-news-2.onrender.com/api/articles')
       .then((response) => {
@@ -21,6 +22,7 @@ export default function App() {
         setLoading(false);
       })
   }, [])
+  
   return (
     <View style={styles.container}>
       {loading ? (
