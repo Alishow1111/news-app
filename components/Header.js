@@ -6,4 +6,4 @@ export default function Header(){
             <Text>News Feed</Text>
         </View>
     )
-  }
+}

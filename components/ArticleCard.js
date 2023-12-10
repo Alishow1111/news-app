@@ -1,17 +1,22 @@
 import { Avatar, Button, Card, Text } from 'react-native-paper';
-import { View } from "react-native"
 
-export default function ArticleCard({item}){
+
+
+export default function ArticleCard({item, navigation}){
     return (
-        <Card style={{marginBottom: 20, marginHorizontal: 20, padding: 20}}>
-            <Card.Title title={item.title}/>
+        <Card style={{marginBottom: 20, marginHorizontal: 20}}>
+            {item.image_url !== null ? <Card.Cover source={{ uri: item.image_url }} /> : null}
             <Card.Content>
-            <Text style={{paddingBottom: 20}} variant="titleLarge">{item.title}</Text>
+            <Text style={{paddingBottom: 20, paddingTop: 20}} variant="titleLarge">{item.title}</Text>
             <Text stylee={{paddingBottom: 20}}variant="bodyMedium">{item.description}</Text>
             </Card.Content>
-            <Card.Cover source={{ uri: item.image_url }} />
             <Card.Actions>
-            <Button>Read More...</Button>
+            <Button
+            title="Read More..."
+            onPress={() =>
+                navigation.navigate('Article', {item: item})
+            }
+            >Read more...</Button>
             </Card.Actions>
         </Card>
     )
